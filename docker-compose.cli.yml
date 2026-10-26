@@ -1,0 +1,9 @@
+services:
+  create-project:
+    build: ./front
+    user: 1000:1000
+    volumes:
+      - ./front:/app
+    stdin_open: true
+    tty: true
+    command: sh
