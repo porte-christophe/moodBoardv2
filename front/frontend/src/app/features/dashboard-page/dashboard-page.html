@@ -1,1 +1,59 @@
-<p>dashboard-page works!</p>
+<main class="h-[100vh] flex flex-col">
+	<header 
+		class="m-4 p-4 w-full lg:w-[80rem] flex flex-col items-center border-1 bg-sauge rounded-[20px] self-center"
+		style="box-shadow: -20px -20px 50px rgba(197, 211, 191, 1), 20px 20px 50px rgba(130, 151, 125, 1);">
+		<h1 class="font-bold text-2xl p-2">Bonjour Jean Charles</h1>
+
+		<p class="p-2">Comment allez-vous aujourd'hui?</p>
+
+		<div class="flex w-full justify-center">
+			<button  
+				class="py-1 bg-sauge border-2 border-solid border-bleuFonce rounded-[20px] text-bleuFonce mx-5 px-5"
+                type="button">
+            		Evaluer son état
+            </button>
+			<button
+				class="py-1 bg-sauge border-2 border-solid border-rougeFonce rounded-[20px] text-rougeFonce mx-5 px-5"
+                type="button">
+            		Se déconnecter
+            </button>
+		</div>
+	</header>
+	<div 
+		id="activity"
+		class="m-4 p-4 w-full lg:w-[80rem] flex justify-around bg-sauge rounded-[20px] self-center"
+		style="box-shadow: -20px -20px 50px rgba(197, 211, 191, 1), 20px 20px 50px rgba(130, 151, 125, 1);">
+		<div>
+			<p>Mon activité est:</p>
+			<p>lorem ipsum</p>
+		</div>
+		<button
+			class="py-1 bg-sauge border-2 border-solid border-bleuFonce rounded-[20px] text-bleuFonce mx-5 px-5"
+            type="button">
+        		Donner un feedback
+        </button>
+	</div>
+	<div 
+		id="daily-status"
+		class="m-4 w-full lg:w-[80rem] self-center grid grid-cols-1 lg:grid-cols-3 gap-2">
+		<div
+			class="bg-sauge rounded-[20px] p-6 flex flex-col items-center"
+			style="box-shadow: -20px -20px 50px rgba(197, 211, 191, 1), 20px 20px 50px rgba(130, 151, 125, 1);">
+			<p>Je suis</p>
+			<p>"bien"</p>
+		</div>
+		<div 
+			class="bg-sauge rounded-[20px] p-6 flex flex-col items-center"
+			style="box-shadow: -20px -20px 50px rgba(197, 211, 191, 1), 20px 20px 50px rgba(130, 151, 125, 1);">
+			<p>Mon corps va</p>
+			<p>"bien"</p>
+		</div>
+		<div 
+			class="bg-sauge rounded-[20px] p-6 flex flex-col items-center"
+			style="box-shadow: -20px -20px 50px rgba(197, 211, 191, 1), 20px 20px 50px rgba(130, 151, 125, 1);">
+			<p>J'ai dormi</p>
+			<p>"bien" heures</p>
+		</div>
+	</div>
+
+</main>
