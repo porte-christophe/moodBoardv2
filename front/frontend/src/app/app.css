@@ -1,0 +1,43 @@
+/* ========= Imports =========== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* ========= Settings =========== */
+/* --------- General settings ----------- */
+:root{
+    --sauge-color: #A9BDA4;
+    --brun-vegetal-color: #3D493B;
+    --sauge-clair-color: #C5D3BF;
+    --sauge-fonce-color: #82977D;
+    --bleu-fonce-color: #3B5999;
+    --rouge-fonce-color: #A91E2C;
+    --vert-fonce-color: #18634B;
+    --ivoire-color: #F0EADF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    font-family: "Poppins", Verdana, Tahoma, sans-serif;
+    font-size: 14px;
+    color: var(--brun-vegetal-color);
+    background-color: var(--sauge-color);
+}
+
+a {
+    color: var(--bleu-fonce-color);
+}
+/* --------- Specific settings ----------- */
+/* Buttons */
+
+.neo-btn-success {
+    border-radius:  50%;;
+    border: 1px solid var(--vert-fonce-color);
+    color: var(--vert-fonce-color);
+    /* background-color: var(--sauge-color); */
+    background-color: yellowgreen !important;
+}
