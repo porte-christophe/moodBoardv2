@@ -13,7 +13,9 @@ COPY . .
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git && \
-    apt-get install -y unzip
+    apt-get install -y unzip 
+
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN symfony local:php:refresh
 
