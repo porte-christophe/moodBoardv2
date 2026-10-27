@@ -1,23 +1,33 @@
 
-<div class="w-full h-full bg-red-500 flex flex-col justify-center">
-    <div class="bg-blue-500 ">
-        <h1 class="text-2xl font-bold text-center">Connexion</h1>
+<div class="w-full h-[100vh] flex flex-col justify-around">
+    <div class="h-[1/3]">
+        <h1 class="text-2xl font-bold text-center py-5">Connexion</h1>
     </div>
-    <div class="bg-yellow-500 w-1/2">
-        <div>
+    <div class="w-full flex align-middle justify-center">
+        <div class="w-1/3 px-3 py-5">
             <form action="">
                 <div class="flex flex-col">
-                    <label for="">Adresse email</label>
+                    <label
+                        class="p-2"
+                        for=""
+                    >
+                        Adresse email
+                    </label>
                     <input
-                        class="bg-ivoire border-2 border-solid border-vertFonce rounded-[5px]"
+                        class="bg-ivoire border-2 border-solid border-vertFonce rounded-[5px] mb-5"
                         type="email"
                         name="email"
                         id=""
                     >
 
-                    <label for="">Mot de passe</label>
+                    <label
+                        class="p-2"
+                        for=""
+                    >
+                        Mot de passe
+                    </label>
                     <input
-                        class="bg-ivoire border-2 border-solid border-vertFonce rounded-[5px]"
+                        class="bg-ivoire border-2 border-solid border-vertFonce rounded-[5px] mb-5"
                         type="password"
                         name="password"
                         id=""
@@ -25,7 +35,7 @@
 
                     <!-- Btn success -->
                     <button
-                        class="bg-sauge border-2 border-solid border-vertFonce rounded-[20px] text-vertFonce"
+                        class="bg-sauge border-2 border-solid border-vertFonce rounded-[20px] text-vertFonce my-5"
                         type="submit"
                     >
                         Se connecter
@@ -34,10 +44,10 @@
             </form>
         </div>
     </div>
-    <div class="text-center">
+    <div class="text-center py-5">
         <p>
             Je n'ai pas de compte.
-            <a href="/register">S'inscrire.</a>
+            <a class="text-bleuFonce" href="/register">S'inscrire.</a>
         </p>
         
     </div>
