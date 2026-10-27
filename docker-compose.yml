@@ -19,12 +19,13 @@ services:
       - 3333:8000
     volumes:
       - ./back:/app
+      - back_vendor:/app/vendor
     working_dir: /app
     command: "symfony serve --listen-ip=0.0.0.0 --no-tls"
     environment:
-      - DATABASE_URL=mysql://user:password@db:3506/dbmood
+      - DATABASE_URL=mysql://user:password@db:3306/dbmood
       - DB_HOST=db
-      - DB_PORT=3506
+      - DB_PORT=3306
       - DB_USER=user
       - DB_PASSWORD=password
       - DB_NAME=dbmood
@@ -39,7 +40,7 @@ services:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
     ports:
-      - 3506:3306
+      - 3306
     volumes:
       - db_data:/var/lib/mysql
 
@@ -55,3 +56,4 @@ services:
 
 volumes:
   db_data:
+  back_vendor:
