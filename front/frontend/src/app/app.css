@@ -11,6 +11,7 @@
     --rouge-fonce-color: #A91E2C;
     --vert-fonce-color: #18634B;
     --ivoire-color: #F0EADF;
+    --shadow-light: -20px -20px 50px var(var(--sauge-clair-color))
 }
 
 * {
