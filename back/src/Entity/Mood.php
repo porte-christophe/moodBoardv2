@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MoodRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MoodRepository::class)]
@@ -18,6 +20,24 @@ class Mood
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    /**
+     * @var Collection<int, DailyStatus>
+     */
+    #[ORM\OneToMany(targetEntity: DailyStatus::class, mappedBy: 'id_mood')]
+    private Collection $dailyStatuses;
+
+    /**
+     * @var Collection<int, FeedBack>
+     */
+    #[ORM\OneToMany(targetEntity: FeedBack::class, mappedBy: 'id_mood')]
+    private Collection $feedBacks;
+
+    public function __construct()
+    {
+        $this->dailyStatuses = new ArrayCollection();
+        $this->feedBacks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,6 +64,66 @@ class Mood
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DailyStatus>
+     */
+    public function getDailyStatuses(): Collection
+    {
+        return $this->dailyStatuses;
+    }
+
+    public function addDailyStatus(DailyStatus $dailyStatus): static
+    {
+        if (!$this->dailyStatuses->contains($dailyStatus)) {
+            $this->dailyStatuses->add($dailyStatus);
+            $dailyStatus->setIdMood($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDailyStatus(DailyStatus $dailyStatus): static
+    {
+        if ($this->dailyStatuses->removeElement($dailyStatus)) {
+            // set the owning side to null (unless already changed)
+            if ($dailyStatus->getIdMood() === $this) {
+                $dailyStatus->setIdMood(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FeedBack>
+     */
+    public function getFeedBacks(): Collection
+    {
+        return $this->feedBacks;
+    }
+
+    public function addFeedBack(FeedBack $feedBack): static
+    {
+        if (!$this->feedBacks->contains($feedBack)) {
+            $this->feedBacks->add($feedBack);
+            $feedBack->setIdMood($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFeedBack(FeedBack $feedBack): static
+    {
+        if ($this->feedBacks->removeElement($feedBack)) {
+            // set the owning side to null (unless already changed)
+            if ($feedBack->getIdMood() === $this) {
+                $feedBack->setIdMood(null);
+            }
+        }
 
         return $this;
     }

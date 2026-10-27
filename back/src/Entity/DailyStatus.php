@@ -22,6 +22,12 @@ class DailyStatus
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'dailyStatuses')]
+    private ?BodyStatus $id_body_status = null;
+
+    #[ORM\ManyToOne(inversedBy: 'dailyStatuses')]
+    private ?Mood $id_mood = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +65,30 @@ class DailyStatus
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getIdBodyStatus(): ?BodyStatus
+    {
+        return $this->id_body_status;
+    }
+
+    public function setIdBodyStatus(?BodyStatus $id_body_status): static
+    {
+        $this->id_body_status = $id_body_status;
+
+        return $this;
+    }
+
+    public function getIdMood(): ?Mood
+    {
+        return $this->id_mood;
+    }
+
+    public function setIdMood(?Mood $id_mood): static
+    {
+        $this->id_mood = $id_mood;
 
         return $this;
     }
