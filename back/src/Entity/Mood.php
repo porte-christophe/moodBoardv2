@@ -15,7 +15,7 @@ class Mood
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 20)]
     private ?string $label = null;
 
     #[ORM\Column]
@@ -24,13 +24,13 @@ class Mood
     /**
      * @var Collection<int, DailyStatus>
      */
-    #[ORM\OneToMany(targetEntity: DailyStatus::class, mappedBy: 'id_mood')]
+    #[ORM\OneToMany(targetEntity: DailyStatus::class, mappedBy: 'mood')]
     private Collection $dailyStatuses;
 
     /**
      * @var Collection<int, FeedBack>
      */
-    #[ORM\OneToMany(targetEntity: FeedBack::class, mappedBy: 'id_mood')]
+    #[ORM\OneToMany(targetEntity: FeedBack::class, mappedBy: 'mood')]
     private Collection $feedBacks;
 
     public function __construct()
@@ -80,7 +80,7 @@ class Mood
     {
         if (!$this->dailyStatuses->contains($dailyStatus)) {
             $this->dailyStatuses->add($dailyStatus);
-            $dailyStatus->setIdMood($this);
+            $dailyStatus->setMood($this);
         }
 
         return $this;
@@ -90,8 +90,8 @@ class Mood
     {
         if ($this->dailyStatuses->removeElement($dailyStatus)) {
             // set the owning side to null (unless already changed)
-            if ($dailyStatus->getIdMood() === $this) {
-                $dailyStatus->setIdMood(null);
+            if ($dailyStatus->getMood() === $this) {
+                $dailyStatus->setMood(null);
             }
         }
 
@@ -110,7 +110,7 @@ class Mood
     {
         if (!$this->feedBacks->contains($feedBack)) {
             $this->feedBacks->add($feedBack);
-            $feedBack->setIdMood($this);
+            $feedBack->setMood($this);
         }
 
         return $this;
@@ -120,8 +120,8 @@ class Mood
     {
         if ($this->feedBacks->removeElement($feedBack)) {
             // set the owning side to null (unless already changed)
-            if ($feedBack->getIdMood() === $this) {
-                $feedBack->setIdMood(null);
+            if ($feedBack->getMood() === $this) {
+                $feedBack->setMood(null);
             }
         }
 

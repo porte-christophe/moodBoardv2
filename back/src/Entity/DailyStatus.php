@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\DailyStatusRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DailyStatusRepository::class)]
@@ -16,17 +17,20 @@ class DailyStatus
     #[ORM\Column]
     private ?int $sleepDuration = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comment = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'dailyStatuses')]
-    private ?BodyStatus $id_body_status = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'dailyStatuses')]
-    private ?Mood $id_mood = null;
+    private ?Mood $mood = null;
+
+    #[ORM\ManyToOne(inversedBy: 'dailyStatuses')]
+    private ?BodyStatus $body_status = null;
 
     public function getId(): ?int
     {
@@ -69,29 +73,39 @@ class DailyStatus
         return $this;
     }
 
-    public function getIdBodyStatus(): ?BodyStatus
+    public function getUser(): ?User
     {
-        return $this->id_body_status;
+        return $this->user;
     }
 
-    public function setIdBodyStatus(?BodyStatus $id_body_status): static
+    public function setUser(?User $user): static
     {
-        $this->id_body_status = $id_body_status;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getIdMood(): ?Mood
+    public function getMood(): ?Mood
     {
-        return $this->id_mood;
+        return $this->mood;
     }
 
-    public function setIdMood(?Mood $id_mood): static
+    public function setMood(?Mood $mood): static
     {
-        $this->id_mood = $id_mood;
+        $this->mood = $mood;
 
         return $this;
     }
 
+    public function getBodyStatus(): ?BodyStatus
+    {
+        return $this->body_status;
+    }
 
+    public function setBodyStatus(?BodyStatus $body_status): static
+    {
+        $this->body_status = $body_status;
+
+        return $this;
+    }
 }

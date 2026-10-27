@@ -15,7 +15,7 @@ class BodyStatus
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 20)]
     private ?string $label = null;
 
     #[ORM\Column]
@@ -24,7 +24,7 @@ class BodyStatus
     /**
      * @var Collection<int, DailyStatus>
      */
-    #[ORM\OneToMany(targetEntity: DailyStatus::class, mappedBy: 'id_body_status')]
+    #[ORM\OneToMany(targetEntity: DailyStatus::class, mappedBy: 'body_status')]
     private Collection $dailyStatuses;
 
     public function __construct()
@@ -73,7 +73,7 @@ class BodyStatus
     {
         if (!$this->dailyStatuses->contains($dailyStatus)) {
             $this->dailyStatuses->add($dailyStatus);
-            $dailyStatus->setIdBodyStatus($this);
+            $dailyStatus->setBodyStatus($this);
         }
 
         return $this;
@@ -83,8 +83,8 @@ class BodyStatus
     {
         if ($this->dailyStatuses->removeElement($dailyStatus)) {
             // set the owning side to null (unless already changed)
-            if ($dailyStatus->getIdBodyStatus() === $this) {
-                $dailyStatus->setIdBodyStatus(null);
+            if ($dailyStatus->getBodyStatus() === $this) {
+                $dailyStatus->setBodyStatus(null);
             }
         }
 

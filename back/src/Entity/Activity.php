@@ -23,13 +23,20 @@ class Activity
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
+     * @var Collection<int, User>
+     */
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'activity')]
+    private Collection $users;
+
+    /**
      * @var Collection<int, FeedBack>
      */
-    #[ORM\OneToMany(targetEntity: FeedBack::class, mappedBy: 'id_activity')]
+    #[ORM\OneToMany(targetEntity: FeedBack::class, mappedBy: 'activity')]
     private Collection $feedBacks;
 
     public function __construct()
     {
+        $this->users = new ArrayCollection();
         $this->feedBacks = new ArrayCollection();
     }
 
@@ -63,6 +70,36 @@ class Activity
     }
 
     /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setActivity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getActivity() === $this) {
+                $user->setActivity(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection<int, FeedBack>
      */
     public function getFeedBacks(): Collection
@@ -74,7 +111,7 @@ class Activity
     {
         if (!$this->feedBacks->contains($feedBack)) {
             $this->feedBacks->add($feedBack);
-            $feedBack->setIdActivity($this);
+            $feedBack->setActivity($this);
         }
 
         return $this;
@@ -84,8 +121,8 @@ class Activity
     {
         if ($this->feedBacks->removeElement($feedBack)) {
             // set the owning side to null (unless already changed)
-            if ($feedBack->getIdActivity() === $this) {
-                $feedBack->setIdActivity(null);
+            if ($feedBack->getActivity() === $this) {
+                $feedBack->setActivity(null);
             }
         }
 

@@ -20,10 +20,13 @@ class FeedBack
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'feedBacks')]
-    private ?Mood $id_mood = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'feedBacks')]
-    private ?Activity $id_activity = null;
+    private ?Mood $mood = null;
+
+    #[ORM\ManyToOne(inversedBy: 'feedBacks')]
+    private ?Activity $activity = null;
 
     public function getId(): ?int
     {
@@ -54,26 +57,38 @@ class FeedBack
         return $this;
     }
 
-    public function getIdMood(): ?Mood
+    public function getUser(): ?User
     {
-        return $this->id_mood;
+        return $this->user;
     }
 
-    public function setIdMood(?Mood $id_mood): static
+    public function setUser(?User $user): static
     {
-        $this->id_mood = $id_mood;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getIdActivity(): ?Activity
+    public function getMood(): ?Mood
     {
-        return $this->id_activity;
+        return $this->mood;
     }
 
-    public function setIdActivity(?Activity $id_activity): static
+    public function setMood(?Mood $mood): static
     {
-        $this->id_activity = $id_activity;
+        $this->mood = $mood;
+
+        return $this;
+    }
+
+    public function getActivity(): ?Activity
+    {
+        return $this->activity;
+    }
+
+    public function setActivity(?Activity $activity): static
+    {
+        $this->activity = $activity;
 
         return $this;
     }
