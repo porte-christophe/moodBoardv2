@@ -13,9 +13,9 @@ export const routes: Routes = [
 	{path:'login', component:LoginPage},
 	{path:'register', component:RegisterPage},
 	{path:'dashboard', component:DashboardPage},
-	{path: '**', redirectTo: 'login', pathMatch: 'full'},
-	{path:'evaluationstatus', component:EvaluationStatusModal},
+	{path:'evaluation-status', component:EvaluationStatusModal},
 	{path:'feedback', component:FeedbackModal},
 	{path:'activities', component:ActivityModal},
+	{path: '**', redirectTo: 'login', pathMatch: 'full'},
 
 ];

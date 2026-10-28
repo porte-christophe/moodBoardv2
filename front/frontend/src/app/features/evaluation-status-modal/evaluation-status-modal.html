@@ -1,1 +1,25 @@
-<p>evaluation-status-modal works!</p>
+<div>
+    <h1>Evaluation status</h1>
+    <div>
+        <h2>Moods</h2>
+        <div>
+            <ul>
+                @for (mood of moods; track mood.id) {
+                <li>{{ mood.label }}</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h2>
+            Body status
+        </h2>
+        <div>
+             <ul>
+                @for (status of bodyStatuses; track status.id) {
+                <li>{{ status.label }}</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
