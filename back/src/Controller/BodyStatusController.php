@@ -9,7 +9,7 @@ use App\Repository\BodyStatusRepository;
 
 final class BodyStatusController extends AbstractController
 {
-    #[Route('/bodystatus', methods: ['GET'])]
+    #[Route('/body-statuses', methods: ['GET'])]
     public function index(BodyStatusRepository $bsRepo): JsonResponse
     {
 

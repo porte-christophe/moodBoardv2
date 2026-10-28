@@ -10,7 +10,7 @@ use App\Repository\MoodRepository;
 
 final class MoodController extends AbstractController
 {
-    #[Route('/mood', methods: ['GET'])]
+    #[Route('/moods', methods: ['GET'])]
     public function index(MoodRepository $moodRepo): JsonResponse
     {
         $moods = $moodRepo->findAll();
