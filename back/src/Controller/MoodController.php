@@ -3,17 +3,19 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Repository\MoodRepository;
+
 
 final class MoodController extends AbstractController
 {
-    #[Route('/mood', name: 'app_mood')]
-    public function index(): Response
+    #[Route('/mood', methods: ['GET'])]
+    public function index(MoodRepository $moodRepo): JsonResponse
     {
-        return $this->render('mood/index.html.twig', [
-            'controller_name' => 'MoodController',
-        ]);
+        $moods = $moodRepo->findAll();
+
+        return $this->json($moods);
     }
 
     // =========== NOT TO DO ==========

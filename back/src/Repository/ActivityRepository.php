@@ -15,7 +15,14 @@ class ActivityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Activity::class);
     }
-
+    public function findTwo()
+    {
+        return $this->createQueryBuilder('a')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 //    /**
 //     * @return Activity[] Returns an array of Activity objects
 //     */
