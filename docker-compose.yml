@@ -21,7 +21,7 @@ services:
       - ./back:/app
       - back_vendor:/app/vendor
     working_dir: /app
-    command: "symfony serve --listen-ip=0.0.0.0 --no-tls"
+    command: sh -c "composer install && symfony serve --listen-ip=0.0.0.0 --no-tls"
     environment:
       - DATABASE_URL=mysql://user:password@db:3306/dbmood
       - DB_HOST=db

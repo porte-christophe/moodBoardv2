@@ -33,6 +33,9 @@ class Mood
     #[ORM\OneToMany(targetEntity: FeedBack::class, mappedBy: 'mood')]
     private Collection $feedBacks;
 
+    #[ORM\Column(length: 50)]
+    private ?string $urlImage = null;
+
     public function __construct()
     {
         $this->dailyStatuses = new ArrayCollection();
@@ -124,6 +127,18 @@ class Mood
                 $feedBack->setMood(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUrlImage(): ?string
+    {
+        return $this->urlImage;
+    }
+
+    public function setUrlImage(string $urlImage): static
+    {
+        $this->urlImage = $urlImage;
 
         return $this;
     }
