@@ -8,11 +8,14 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class BodyStatusController extends AbstractController
 {
-    #[Route('/body/status/controller', name: 'app_body_status_controller')]
+    #[Route('/bodystatus', name: 'app_body_status')]
     public function index(): Response
     {
-        return $this->render('body_status_controller/index.html.twig', [
+        return $this->render('body_status/index.html.twig', [
             'controller_name' => 'BodyStatusController',
         ]);
     }
+
+    // =========== NOT TO DO ==========
+    // Récupérer les émotions: getAllBodySatus()
 }

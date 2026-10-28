@@ -15,4 +15,7 @@ final class ActivityController extends AbstractController
             'controller_name' => 'ActivityController',
         ]);
     }
+
+    // =========== NOT TO DO ==========
+    // Récupérer les émotions: getAllActivity()
 }

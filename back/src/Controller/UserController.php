@@ -15,4 +15,12 @@ final class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+
+    // =========== NOT TO DO ==========
+    // Pouvoir consulter ses états passés : seeStatistics()
+    // Donner son avis sur l'activité en cours : giveFeedback()
+    // =========== TO DO ==========
+    // Evaluer son statut : evaluateStatus()
+    // Récupérer l'activité en cours : getCurrentActivity()
+    
 }

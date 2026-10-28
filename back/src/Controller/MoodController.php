@@ -15,4 +15,7 @@ final class MoodController extends AbstractController
             'controller_name' => 'MoodController',
         ]);
     }
+
+    // =========== NOT TO DO ==========
+    // Récupérer les émotions: getAllMood()
 }
