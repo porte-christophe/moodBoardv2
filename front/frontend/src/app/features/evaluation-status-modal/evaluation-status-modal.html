@@ -4,7 +4,7 @@
         <h2>Moods</h2>
         <div>
             <ul>
-                @for (mood of moods; track mood.id) {
+                @for (mood of moods(); track mood.id) {
                 <li>{{ mood.label }}</li>
                 }
             </ul>
@@ -16,7 +16,7 @@
         </h2>
         <div>
              <ul>
-                @for (status of bodyStatuses; track status.id) {
+                @for (status of bodyStatuses(); track status.id) {
                 <li>{{ status.label }}</li>
                 }
             </ul>
