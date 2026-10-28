@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { EvaluationStatusService } from '../../services/evaluation-status';
+import { Mood } from '../../types/mood-type';
 
 @Component({
   imports: [],
@@ -9,16 +10,15 @@ import { EvaluationStatusService } from '../../services/evaluation-status';
 })
 
 export class EvaluationStatusModal implements OnInit {
-	moods: any[] = [];
-	bodyStatuses: any[] = [];
-
-
+	
 	private readonly evaluationStatusService = inject(EvaluationStatusService);
-
+	moods = this.evaluationStatusService.moodsSignal;
+	bodyStatuses = this.evaluationStatusService.bodyStatusesSignal;
+	
 	ngOnInit(): void {
 		this.evaluationStatusService.getMoods().subscribe({
 			next: (data) => {
-				this.moods = data;
+				this.evaluationStatusService.updateMoods(data);
 				console.log('Moods récupérés :', data);
 			},
 			error: (error) => {
@@ -28,7 +28,7 @@ export class EvaluationStatusModal implements OnInit {
 
 		this.evaluationStatusService.getBodyStatuses().subscribe({
 			next: (data) => {
-				this.bodyStatuses = data;
+				this.evaluationStatusService.updateBodyStatuses(data);
 				console.log('Body statuses récupérés :', data);
 			},
 			error: (error) => {
