@@ -16,6 +16,19 @@ class DailyStatusRepository extends ServiceEntityRepository
         parent::__construct($registry, DailyStatus::class);
     }
 
+
+    public function findLast($user): array
+    {
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.user = :val')
+            ->setParameter('val', $user)
+            ->orderBy('d.id', 'DSC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return DailyStatus[] Returns an array of DailyStatus objects
 //     */
